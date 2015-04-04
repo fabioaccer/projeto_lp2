@@ -1,0 +1,13 @@
+create table usuario (
+id_usuario int not null,
+cd_tipo_usuario int,
+nome varchar(30),
+login varchar(90),
+senha varchar(90),
+constraint pk_id_usuario primary key (id_usuario),
+constraint fk_cd_tipo_usuario foreign key (cd_tipo_usuario) references tipo_usuario (cd_tipo_usuario)
+);
+
+insert into usuario (id_usuario,nome, login, senha)
+values (1, 'fabio', 'adm', 'Adm1n'), (2, 'maizon', 'maz', 'maz1989'), (3, 'jay', 'jay1', 'jay1jay1'),
+(4, 'gabriel', 'super', 'AdM896_1ha'), (5, 'willian', 'will', 'MASTER__23h10');

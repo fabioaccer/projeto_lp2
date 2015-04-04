@@ -1,0 +1,10 @@
+create table statu_sala (
+cd_statu_sala int not null,
+nome_statu_sala varchar(30) not null,
+
+constraint pk_cd_statu_sala primary key (cd_statu_sala)
+);
+
+insert into statu_sala (cd_statu_sala, nome_statu_sala)
+values (1, 'reparo'), (2, 'higienizacao'), (3, 'uso');
+

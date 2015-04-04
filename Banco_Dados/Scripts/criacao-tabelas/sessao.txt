@@ -1,0 +1,12 @@
+create table sessao (
+cd_sessao int not null,
+numero_sala int,
+dataexibicao date not null,
+
+constraint pk_cd_sessao primary key (cd_sessao),
+constraint fk_numero_sala foreign key (numero_sala) references sala_proj (numero_sala)
+);
+
+insert into sessao (cd_sessao, dataexibicao)
+values (1, '2015-04-23'), (2, '2015-04-15'), (3, '2015-05-01'), (4, '2015-05-10'), (5, '2015-05-19');
+

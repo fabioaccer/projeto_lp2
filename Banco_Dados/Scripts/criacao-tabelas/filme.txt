@@ -1,0 +1,23 @@
+create table filme (
+cd_filme int not null,
+cd_genero int,
+nome_filme varchar(30),
+classificacao int,
+duracao int,
+diretor varchar(30),
+distribuidora varchar(30),
+cd_statu_filme int,
+    
+constraint pk_cd_filme primary key (cd_filme),
+constraint fk_cd_genero foreign key (cd_genero) references genero (cd_genero),
+constraint fk_cd_statu_filme foreign key (cd_statu_filme) references statu_filme (cd_statu_filme)
+);
+
+
+insert into filme (cd_filme, nome_filme, classificacao, duracao, diretor, distribuidora) 
+values (1,'Harry Potter', 10, 2, 'Van hauten', 'warner'),
+(2,'Harry Potter',10,2,'Van han','warner'),
+(3,'Star wars',16,3,'Ribert H','Disney'),
+(4,'Cinderela',10,2,'Van han','Diseny'),
+(5,'Harry Potter 9',18,2,'Yulsen M','warner');
+

@@ -1,0 +1,71 @@
+create table filme (
+cd_filme int not null primary key,
+nome_filme varchar(30),
+classificacao int,
+duracao int,
+diretor varchar(30),
+distribuidora varchar(30)   
+);
+
+
+insert into filme (cd_filme, nome_filme, classificacao, duracao, diretor, distribuidora)
+values (1,'Harry Potter',10,2,'Van han','warner'),
+(2,'Harry Potter',10,2,'Van han','warner'),
+(3,'Star wars',16,3,'Ribert H','Disney'),
+(4,'Cinderela',10,2,'Van han','Diseny'),
+(5,'Harry Potter 9',18,2,'Yulsen M','warner');
+
+create table sessao (
+cd_sessao int not null primary key,
+dataexibicao date not null,
+numero_sala int,
+foreign key (numero_sala) references sala_proj (numero_sala)
+);
+
+insert into sessao (cd_sessao,dataexibicao)
+values (1,'2015-04-03'),
+values (1,'2015-04-03'),
+values (1,'2015-04-03'),
+values (1,'2015-04-03'),
+values (1,'2015-04-03');
+
+create table sala_proj (
+capacidade int not null,
+numero_sala int not null primary key
+);
+
+insert into sala_proj (capacidade,numero_sala)
+values (30,1);
+
+create table ingresso (
+cd_ingresso int not null primary key,
+valor double not null,
+cd_filme int,
+cd_sessao int,
+foreign key (cd_filme) references filme (cd_filme),
+foreign key (cd_sessao) references sessao (cd_sessao)
+);
+
+insert into ingresso (cd_ingresso,valor)
+values (1,25);
+
+/*create table ator (
+cd_ator int not null,
+nome varchar(30) not null,
+papel varchar(30),
+
+constraint pk_cd_ator primary key (cd_ator)
+);*/
+
+create table usuario (
+id_usuario int primary key not null,
+cd_ingresso int,
+nome varchar(30),
+login varchar(90),
+senha varchar(90),
+tipo varchar (30),
+foreign key (cd_ingresso) references ingresso (cd_ingresso)
+);
+
+insert into usuario (id_usuario,nome,login,senha,tipo)
+values (1,'fabio','accer','fabio123','gerente');

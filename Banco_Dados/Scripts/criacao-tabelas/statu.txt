@@ -1,0 +1,22 @@
+
+
+create table statu_sala (
+cd_statu_sala int not null,
+nome_statu_sala varchar(30) not null,
+
+constraint pk_cd_statu_sala primary key (cd_statu_sala)
+);
+
+insert into statu_sala (cd_statu_sala, nome_statu_sala)
+values (1, 'reparo'), (2, 'higienizacao'), (3, 'uso');
+
+create table statu_filme (
+cd_statu_filme int not null,
+nome_statu_filme varchar(30) not null,
+
+constraint pk_cd_statu_filme primary key (cd_statu_filme)
+);
+
+insert into statu_filme (cd_statu_filme, nome_statu_filme)
+values (1, 'estreia'), (2, 'lançamento'), (3, 'cartaz');
+

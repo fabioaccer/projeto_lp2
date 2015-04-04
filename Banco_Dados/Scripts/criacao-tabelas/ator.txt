@@ -1,0 +1,13 @@
+
+
+create table ator (
+cd_ator int not null,
+nome varchar(30) not null,
+papel varchar(30),
+
+constraint pk_cd_ator primary key (cd_ator)
+);
+
+insert into ator (cd_ator, nome, papel)
+values (1, 'Yan', 'árvore'), (2, 'Susan', 'Principal'), (3, 'Daniel', 'mago'), (4, 'Yan heyz', 'nuvem'), (5, 'Yan vauk', 'parede');
+

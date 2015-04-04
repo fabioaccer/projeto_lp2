@@ -1,0 +1,9 @@
+
+
+create table elenco (
+cd_filme int,
+cd_ator int,
+
+constraint fk_cd_filme2 foreign key (cd_filme) references filme (cd_filme),
+constraint fk_cd_ator foreign key (cd_ator) references ator (cd_ator);
+

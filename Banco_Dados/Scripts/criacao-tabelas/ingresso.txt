@@ -1,0 +1,17 @@
+
+
+create table ingresso (
+cd_filme int,
+cd_ingresso int not null,
+valor double not null,
+cd_tipo_usuario int,
+cd_sessao int,
+
+constraint fk_cd_filme foreign key (cd_filme) references filme (cd_filme),
+constraint fk_cd_sessao foreign key (cd_sessao) references sessao (cd_sessao),
+constraint fk_cd_tipo_usuario2 foreign key (cd_tipo_usuario) references tipo_usuario (cd_tipo_usuario),
+constraint pk_cd_ingresso primary key (cd_ingresso)
+);
+
+insert into ingresso (cd_ingresso, valor)
+values (1, 25), (2, 30), (3, 17), (4, 30), (5, 25);

@@ -1,0 +1,14 @@
+
+
+create table sala_proj (
+capacidade int not null,
+numero_sala int not null,
+cd_statu_sala int,
+
+constraint fk_cd_statu_sala foreign key (cd_statu_sala) references statu_sala (cd_statu_sala),
+constraint pk_numero_sala primary key (numero_sala)
+);
+
+insert into sala_proj (numero_sala, capacidade)
+values (1, 20), (2, 35), (3, 15), (4, 35), (5, 20);
+

@@ -1,0 +1,10 @@
+create table genero(
+cd_genero int not null,
+nome_genero varchar(30) not null,
+
+constraint pk_cd_genero primary key (cd_genero)
+);
+
+insert into genero (cd_genero, nome_genero)
+values (1, 'romance'), (2, 'ação'), (3, 'ficção científica'), (4, 'infantil');
+

@@ -1,0 +1,11 @@
+
+create table tipo_usuario (
+cd_tipo_usuario int not null,
+nome_tipo_usuario varchar(30) not null,
+
+constraint pk_cd_tipo_usuario primary key (cd_tipo_usuario)
+);
+
+insert into tipo_usuario (cd_tipo_usuario, nome_tipo_usuario)
+values (1, 'gerente'), (2, 'atendente'), (3, 'cliente');
+

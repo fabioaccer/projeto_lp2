@@ -1,0 +1,134 @@
+create table filme (
+cd_filme int not null,
+cd_genero int,
+nome_filme varchar(30),
+classificacao int,
+duracao int,
+diretor varchar(30),
+distribuidora varchar(30),
+cd_statu_filme int,
+    
+constraint pk_cd_filme primary key (cd_filme),
+constraint fk_cd_genero foreign key (cd_genero) references genero (cd_genero),
+constraint fk_cd_statu_filme foreign key (cd_statu_filme) references statu_filme (cd_statu_filme)
+);
+
+
+insert into filme (cd_filme, nome_filme, classificacao, duracao, diretor, distribuidora) 
+values (1,'Harry Potter', 10, 2, 'Van hauten', 'warner'),
+(2,'Harry Potter',10,2,'Van han','warner'),
+(3,'Star wars',16,3,'Ribert H','Disney'),
+(4,'Cinderela',10,2,'Van han','Diseny'),
+(5,'Harry Potter 9',18,2,'Yulsen M','warner');
+
+create table genero(
+cd_genero int not null,
+nome_genero varchar(30) not null,
+
+constraint pk_cd_genero primary key (cd_genero)
+);
+
+insert into genero (cd_genero, nome_genero)
+values (1, 'romance'), (2, 'ação'), (3, 'ficção científica'), (4, 'infantil');
+
+create table sessao (
+cd_sessao int not null,
+numero_sala int,
+dataexibicao date not null,
+
+constraint pk_cd_sessao primary key (cd_sessao),
+constraint fk_numero_sala foreign key (numero_sala) references sala_proj (numero_sala)
+);
+
+insert into sessao (cd_sessao, dataexibicao)
+values (1, '2015-04-23'), (2, '2015-04-15'), (3, '2015-05-01'), (4, '2015-05-10'), (5, '2015-05-19');
+
+create table statu_sala (
+cd_statu_sala int not null,
+nome_statu_sala varchar(30) not null,
+
+constraint pk_cd_statu_sala primary key (cd_statu_sala)
+);
+
+insert into statu_sala (cd_statu_sala, nome_statu_sala)
+values (1, 'reparo'), (2, 'higienizacao'), (3, 'uso');
+
+create table statu_filme (
+cd_statu_filme int not null,
+nome_statu_filme varchar(30) not null,
+
+constraint pk_cd_statu_filme primary key (cd_statu_filme)
+);
+
+insert into statu_filme (cd_statu_filme, nome_statu_filme)
+values (1, 'estreia'), (2, 'lançamento'), (3, 'cartaz');
+
+create table sala_proj (
+capacidade int not null,
+numero_sala int not null,
+cd_statu_sala int,
+
+constraint fk_cd_statu_sala foreign key (cd_statu_sala) references statu_sala (cd_statu_sala),
+constraint pk_numero_sala primary key (numero_sala)
+);
+
+insert into sala_proj (numero_sala, capacidade)
+values (1, 20), (2, 35), (3, 15), (4, 35), (5, 20);
+
+create table ingresso (
+cd_filme int,
+cd_ingresso int not null,
+valor double not null,
+cd_tipo_usuario int,
+cd_sessao int,
+
+constraint fk_cd_filme foreign key (cd_filme) references filme (cd_filme),
+constraint fk_cd_sessao foreign key (cd_sessao) references sessao (cd_sessao),
+constraint fk_cd_tipo_usuario2 foreign key (cd_tipo_usuario) references tipo_usuario (cd_tipo_usuario),
+constraint pk_cd_ingresso primary key (cd_ingresso)
+);
+
+insert into ingresso (cd_ingresso, valor)
+values (1, 25), (2, 30), (3, 17), (4, 30), (5, 25);
+
+create table elenco (
+cd_filme int,
+cd_ator int,
+
+constraint fk_cd_filme2 foreign key (cd_filme) references filme (cd_filme),
+constraint fk_cd_ator foreign key (cd_ator) references ator (cd_ator);
+
+create table ator (
+cd_ator int not null,
+nome varchar(30) not null,
+papel varchar(30),
+
+constraint pk_cd_ator primary key (cd_ator)
+);
+
+insert into ator (cd_ator, nome, papel)
+values (1, 'Yan', 'árvore'), (2, 'Susan', 'Principal'), (3, 'Daniel', 'mago'), (4, 'Yan heyz', 'nuvem'), (5, 'Yan vauk', 'parede');
+
+create table tipo_usuario (
+cd_tipo_usuario int not null,
+nome_tipo_usuario varchar(30) not null,
+
+constraint pk_cd_tipo_usuario primary key (cd_tipo_usuario)
+);
+
+insert into tipo_usuario (cd_tipo_usuario, nome_tipo_usuario)
+values (1, 'gerente'), (2, 'atendente'), (3, 'cliente');
+
+create table usuario (
+id_usuario int not null,
+cd_tipo_usuario int,
+nome varchar(30),
+login varchar(90),
+senha varchar(90),
+constraint pk_id_usuario primary key (id_usuario),
+constraint fk_cd_tipo_usuario foreign key (cd_tipo_usuario) references tipo_usuario (cd_tipo_usuario)
+);
+
+insert into usuario (id_usuario,nome, login, senha)
+values (1, 'fabio', 'adm', 'Adm1n'), (2, 'maizon', 'maz', 'maz1989'), (3, 'jay', 'jay1', 'jay1jay1'),
+(4, 'gabriel', 'super', 'AdM896_1ha'), (5, 'willian', 'will', 'MASTER__23h10');
